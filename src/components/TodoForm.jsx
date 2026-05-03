@@ -1,4 +1,6 @@
 ﻿import React, {useState} from "react";
+import Button from "./ui/Button";
+import Input from "./ui/Input";
 
 function TodoForm({addTask}) {
     const [text, setText] = useState('');
@@ -13,13 +15,12 @@ function TodoForm({addTask}) {
 
     return (
         <form onSubmit={handleSubmit} className="todo-form">
-            <input
-                type="text"
+            <Input
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Введіть нову задачу..."
             />
-            <button type="submit">Додати</button>
+            <Button type="submit">Додати</Button>
         </form>
     );
 }

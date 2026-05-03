@@ -1,4 +1,6 @@
 ﻿import React, {useState} from 'react';
+import Button from "./ui/Button";
+import Input from "./ui/Input";
 
 function TodoSearch({onSearch}) {
     const [term, setTerm] = useState('');
@@ -16,18 +18,17 @@ function TodoSearch({onSearch}) {
 
     return (
         <form onSubmit={handleSubmit} className="todo-search-form">
-            <input
-                type="text"
+            <Input
                 placeholder="Пошук задачі"
                 value={term}
                 onChange={handleChange}
                 className="todo-search-input"
             />
-            <button
+            <Button
                 type="submit"
                 className="todo-search-button"
             >Пошук
-            </button>
+            </Button>
         </form>
     );
 }
