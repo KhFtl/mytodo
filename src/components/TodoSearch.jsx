@@ -1,4 +1,4 @@
-﻿import React, {useState} from 'react';
+﻿import {useState} from 'react';
 import Button from "./ui/Button";
 import Input from "./ui/Input";
 
@@ -27,7 +27,7 @@ function TodoSearch({onSearch}) {
             <Button
                 type="submit"
                 className="todo-search-button"
-            >Пошук
+            >Знайти задачу
             </Button>
         </form>
     );
