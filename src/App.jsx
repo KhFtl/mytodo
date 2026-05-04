@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import './App.css'
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
@@ -6,11 +6,23 @@ import TodoSearch from "./components/TodoSearch";
 
 function App() {
 //Об'єкт роботи з задачами
-    const [tasks, setTasks] = useState([
-        {id: 1, text:'Вивчити React', completed: false},
-        {id: 2, text: 'Подивитися аніме Наруто', completed: true},
-        {id:3, text: 'Зробити ДЗ по React.js', completed: true}
-    ]);
+    const [tasks, setTasks] = useState( ()=>
+        {
+            const savedTasks = localStorage.getItem('tasks');
+            if(savedTasks) {
+                return JSON.parse(savedTasks);
+            }
+        return [
+            {id: 1, text:'Вивчити React', completed: false},
+            {id: 2, text: 'Подивитися аніме Наруто', completed: true},
+            {id:3, text: 'Зробити ДЗ по React.js', completed: true},
+            {id:4, text: 'Зробити ВСІ ДЗ', completed: false}
+        ]
+        });
+
+    useEffect(()=>{
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, [tasks]);
 //Пропс для пошуку
 const[searchQuery, setSearchQuery] = useState('');
 //Функція додавання задачі
